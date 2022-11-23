@@ -4,10 +4,8 @@ import com.example.desafioapinoticias.dto.DadosUser;
 import com.example.desafioapinoticias.entity.User;
 import com.example.desafioapinoticias.services.UserService;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("users")
@@ -19,7 +17,8 @@ public class UserController {
         this.service = service;
     }
 
-    @GetMapping
+    @PostMapping
+    @Transactional
     public void cadastrarUser(@RequestBody @Valid DadosUser dados){
         service.saveUser(new User(dados));
     }
