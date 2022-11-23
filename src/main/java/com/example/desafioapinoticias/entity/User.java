@@ -1,6 +1,7 @@
 package com.example.desafioapinoticias.entity;
 
-import com.example.desafioapinoticias.dto.DadosUser;
+import com.example.desafioapinoticias.dto.CadastraDadosUser;
+import com.example.desafioapinoticias.dto.DadosAtualizacaoUser;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,6 +11,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+
 
 @Table(name = "usuarios")
 @Entity(name = "User")
@@ -28,10 +30,25 @@ public class User {
     private String password;
 
 
-    public User(DadosUser dados) {
+    public User(CadastraDadosUser dados) {
         this.nome = dados.nome();
         this.email = dados.email();
         this.password = dados.password();
 
     }
+
+    public void atualizarInformacoes(DadosAtualizacaoUser dados) {
+        if (dados.nome() != null) {
+            this.nome = dados.nome();
+        }
+        if (dados.email() != null) {
+            this.email = dados.email();
+        }
+        if (dados.password() != null) {
+            this.password = dados.password();
+        }
+
+    }
+
+
 }
