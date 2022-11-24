@@ -1,13 +1,15 @@
 package com.example.desafioapinoticias.services;
 
+import com.example.desafioapinoticias.dto.DadosListaUser;
 import com.example.desafioapinoticias.entity.User;
 import com.example.desafioapinoticias.repository.UserRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
+
 
 @Service
 public class UserService {
@@ -22,23 +24,24 @@ public class UserService {
         userRepository.save(user);
     }
 
+
+    @Transactional
     public void deleteUser(Long id) {
-        userRepository.getReferenceById(id);
+        userRepository.deleteById(id);
     }
 
-    public User buscarIdUser(Long id) throws Exception {
+    public DadosListaUser buscarIdUser(Long id) {
         Optional<User> user = userRepository.findById(id);
-        if (user.isEmpty()) {
-            throw new Exception("Usuário nao encontrado");
-        }
-        return user.get();
+        User dados = user.orElseThrow();
+        return new DadosListaUser(dados);
+
     }
 
     public Page<User> buscarTodos(Pageable pageable) {
         return userRepository.findAll(pageable);
     }
 
-    public User atualizar(Long id){
+    public User atualizar(Long id) {
         return userRepository.getReferenceById(id);
     }
 

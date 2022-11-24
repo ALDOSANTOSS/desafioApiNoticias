@@ -8,6 +8,7 @@ import com.example.desafioapinoticias.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,8 +31,15 @@ public class UserController {
     }
 
     @GetMapping
-    public Page<DadosListaUser> listar(Pageable paginacao) {
+    public Page<DadosListaUser> listar(@PageableDefault(size = 10, sort = {"nome"})Pageable paginacao) {
         return service.buscarTodos(paginacao).map(DadosListaUser::new);
+    }
+
+    @GetMapping("/{id}")
+    @Transactional
+    public DadosListaUser buscarIdUser (@PathVariable Long id) {
+        return service.buscarIdUser(id);
+
     }
 
     @PutMapping
@@ -43,8 +51,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    @Transactional
-    public void excluir(@PathVariable Long id){
+    public void excluir(@PathVariable Long id) {
         service.deleteUser(id);
 
     }
