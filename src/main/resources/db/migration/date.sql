@@ -1,0 +1,1 @@
+INSERT INTO tb_tag (nome, views) VALUES ('Sport', 0);

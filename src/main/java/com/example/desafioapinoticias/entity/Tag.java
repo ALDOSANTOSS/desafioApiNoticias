@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @Table(name = "tags")
-@Entity(name = "tag")
+@Entity(name = "tb_tag")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor

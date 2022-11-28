@@ -17,7 +17,7 @@
 ## Instruções de uso
 
 1. -Importar o arquivo "Desafio Api Noticia.postman_collection.json" no postman
-
+======================================
 2. Endpoints
 - Cadastrar usuários
 - Cadastrar usuários com tag
