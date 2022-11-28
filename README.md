@@ -22,7 +22,7 @@
 - Cadastrar usuários
 - Cadastrar usuários com tag
 - Cadastrar tag
-- Bucar todos usuários com tag
+- Buscar todos usuários com tag
 - Atualizar dados usuários 
 - Delete usuário 
 - Consumo Api https://apinoticias.tedk.com.br/
