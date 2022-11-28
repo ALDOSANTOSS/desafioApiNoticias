@@ -2,15 +2,14 @@ package com.example.desafioapinoticias.entity;
 
 import com.example.desafioapinoticias.dto.CadastraDadosUser;
 import com.example.desafioapinoticias.dto.DadosAtualizacaoUser;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+
+import java.util.List;
 
 
 @Table(name = "usuarios")
@@ -29,13 +28,25 @@ public class User {
     private String email;
     private String password;
 
+    @ManyToMany
+    private List<Tag> tags;
+
+    
+
+    public User(CadastraDadosUser dados,List<Tag> tags) {
+        this.nome = dados.nome();
+        this.email = dados.email();
+        this.password = dados.password();
+        this.tags = tags;
+
+    }
 
     public User(CadastraDadosUser dados) {
         this.nome = dados.nome();
         this.email = dados.email();
         this.password = dados.password();
-
     }
+
 
     public void atualizarInformacoes(DadosAtualizacaoUser dados) {
         if (dados.nome() != null) {
