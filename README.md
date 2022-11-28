@@ -25,7 +25,10 @@
 - Buscar todos usuários com tag
 - Atualizar dados usuários 
 - Delete usuário 
-- Consumo Api https://apinoticias.tedk.com.br/
+
+
+3. Consumo Api https://apinoticias.tedk.com.br/
+4.  Popular banco
 
 
 ### Exceeds
