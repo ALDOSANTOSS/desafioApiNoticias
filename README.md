@@ -25,7 +25,7 @@
 - Bucar todos usuários com tag
 - Atualizar dados usuários 
 - Delete usuário 
-- Consumo Api
+- Consumo Api https://apinoticias.tedk.com.br/
 
 
 ### Exceeds
